@@ -1,0 +1,23 @@
+/* global.css */
+
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap");
+
+/* Tailwind's base styles */
+@tailwind base;
+
+/* Tailwind's component styles */
+@tailwind components;
+
+/* Tailwind's utility classes */
+@tailwind utilities;
+
+/* Custom global styles */
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+  /* Any additional custom styles can go here */
+}

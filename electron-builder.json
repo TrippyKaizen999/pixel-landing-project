@@ -1,0 +1,37 @@
+{
+  "appId": "com.overwatchcoach.desktop",
+  "productName": "Overwatch 2 Coach",
+  "copyright": "Copyright © 2024",
+  "directories": {
+    "output": "dist-electron"
+  },
+  "files": ["dist/**/*", "electron/main.js", "node_modules/**/*"],
+  "extraResources": [
+    {
+      "from": "dist/spa",
+      "to": "app",
+      "filter": ["**/*"]
+    }
+  ],
+  "win": {
+    "target": "nsis",
+    "icon": "public/icon.ico",
+    "artifactName": "${productName}-${version}-Windows.${ext}"
+  },
+  "mac": {
+    "target": "dmg",
+    "icon": "public/icon.icns",
+    "artifactName": "${productName}-${version}-macOS.${ext}"
+  },
+  "linux": {
+    "target": "AppImage",
+    "icon": "public/icon.png",
+    "artifactName": "${productName}-${version}-Linux.${ext}"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true
+  }
+}
