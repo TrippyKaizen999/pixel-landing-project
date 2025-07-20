@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap");
+
+@layer base {
+  /**
+   * Overwatch-inspired dark theme colors
+   * All colors are in HSL format for Tailwind compatibility
+   */
+  :root {
+    /* Dark theme base colors */
+    --background: 220 13% 8%;
+    --foreground: 210 20% 92%;
+
+    --card: 220 13% 10%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 220 13% 12%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 28 100% 60%;
+    --primary-foreground: 220 13% 8%;
+
+    --secondary: 220 13% 16%;
+    --secondary-foreground: 210 20% 92%;
+
+    --muted: 220 13% 14%;
+    --muted-foreground: 210 10% 60%;
+
+    --accent: 220 13% 16%;
+    --accent-foreground: 210 20% 92%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 20% 92%;
+
+    --border: 220 13% 20%;
+    --input: 220 13% 16%;
+    --ring: 28 100% 60%;
+
+    --radius: 0.75rem;
+
+    /* Overwatch brand colors */
+    --ow-orange: 28 100% 60%;
+    --ow-orange-dark: 28 100% 45%;
+    --ow-blue: 200 100% 50%;
+    --ow-blue-dark: 200 100% 35%;
+    --ow-purple: 270 50% 60%;
+    --ow-gold: 45 100% 60%;
+    --ow-silver: 210 10% 75%;
+    --ow-bronze: 25 60% 45%;
+    --ow-diamond: 180 100% 70%;
+    --ow-master: 270 100% 70%;
+    --ow-grandmaster: 350 100% 70%;
+
+    /* Dark UI variations */
+    --ow-dark-100: 220 13% 18%;
+    --ow-dark-200: 220 13% 16%;
+    --ow-dark-300: 220 13% 14%;
+    --ow-dark-400: 220 13% 12%;
+    --ow-dark-500: 220 13% 10%;
+
+    /* Sidebar colors */
+    --sidebar-background: 220 13% 8%;
+    --sidebar-foreground: 210 20% 92%;
+    --sidebar-primary: 28 100% 60%;
+    --sidebar-primary-foreground: 220 13% 8%;
+    --sidebar-accent: 220 13% 16%;
+    --sidebar-accent-foreground: 210 20% 92%;
+    --sidebar-border: 220 13% 20%;
+    --sidebar-ring: 28 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Orbitron", monospace;
+    font-weight: 600;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-ow-dark-400;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ow-orange/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ow-orange/70;
+  }
+
+  /* Glow effects */
+  .glow-orange {
+    box-shadow: 0 0 20px hsl(var(--ow-orange) / 0.3);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px hsl(var(--ow-blue) / 0.3);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 20px hsl(var(--ow-purple) / 0.3);
+  }
+
+  /* Animated backgrounds */
+  .bg-gradient-ow {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--ow-orange) / 0.1),
+      hsl(var(--ow-blue) / 0.1)
+    );
+  }
+
+  .bg-card-hover {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--card)),
+      hsl(var(--ow-dark-200))
+    );
+    transition: all 0.3s ease;
+  }
+
+  .bg-card-hover:hover {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--ow-dark-200)),
+      hsl(var(--ow-orange) / 0.05)
+    );
+    box-shadow: 0 0 30px hsl(var(--ow-orange) / 0.2);
+  }
+
+  /* Rank colors */
+  .text-rank-bronze {
+    color: hsl(var(--ow-bronze));
+  }
+  .text-rank-silver {
+    color: hsl(var(--ow-silver));
+  }
+  .text-rank-gold {
+    color: hsl(var(--ow-gold));
+  }
+  .text-rank-platinum {
+    color: hsl(var(--ow-blue));
+  }
+  .text-rank-diamond {
+    color: hsl(var(--ow-diamond));
+  }
+  .text-rank-master {
+    color: hsl(var(--ow-master));
+  }
+  .text-rank-grandmaster {
+    color: hsl(var(--ow-grandmaster));
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-ow-orange hover:bg-ow-orange-dark text-ow-dark-500 font-semibold px-6 py-3 rounded-lg transition-all duration-200 glow-orange;
+  }
+
+  .btn-secondary {
+    @apply bg-ow-dark-200 hover:bg-ow-dark-100 text-foreground font-semibold px-6 py-3 rounded-lg transition-all duration-200 border border-ow-dark-100 hover:border-ow-orange/30;
+  }
+
+  .card-ow {
+    @apply bg-card border border-ow-dark-100 rounded-xl p-6 bg-card-hover;
+  }
+
+  .sidebar-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 hover:bg-ow-dark-200 hover:text-ow-orange;
+  }
+
+  .sidebar-item.active {
+    @apply bg-ow-orange/10 text-ow-orange border-r-2 border-ow-orange;
+  }
+}
